@@ -21,7 +21,6 @@ func (e *Evaluator) wordWorker(in <-chan *Line, wg sync.WaitGroup) {
 			} else {
 				rs = append(rs, unicode.ToLower(c))
 			}
-			last = c
 		}
 		lastWord := ""
 		for _, w := range ls {
