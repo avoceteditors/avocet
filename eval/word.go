@@ -17,7 +17,7 @@ func (e *Evaluator) wordWorker(in <-chan *Line, wg sync.WaitGroup) {
 		for _, c := range l.Text {
 			if unicode.IsLetter(c) {
 				rs = append(rs, unicode.ToLower(c))
-			} else if len(rs) > 0 {
+			} else if c == ' ' && len(rs) > 0 {
 				ls = append(ls, string(rs))
 				rs = []rune{}
 			}
