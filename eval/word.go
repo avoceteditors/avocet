@@ -18,13 +18,14 @@ func (e *Evaluator) wordWorker(in <-chan *Line, wg sync.WaitGroup) {
 				if unicode.IsLetter(r) || unicode.IsNumber(r) {
 					nw = append(nw, r)
 				}
-				ns := string(nw)
-				if lastWord == ns {
-					l.Error("Dup")
-					e.hasErrors = 1
-				}
-				lastWord = ns
 			}
+			ns := string(nw)
+			if lastWord == ns {
+				l.Error("Dup")
+				e.hasErrors = 1
+			}
+			lastWord = ns
+
 		}
 	}
 }
