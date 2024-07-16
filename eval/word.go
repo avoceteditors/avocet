@@ -19,8 +19,6 @@ func (e *Evaluator) wordWorker(in <-chan *Line, wg sync.WaitGroup) {
 			if c == ' ' && len(rs) > 0 {
 				ls = append(ls, string(rs))
 				rs = []rune{}
-			} else if c == '.' && !unicode.IsLetter(last) {
-				rs = append(rs, unicode.ToLower(c))
 			} else {
 				rs = append(rs, unicode.ToLower(c))
 			}
