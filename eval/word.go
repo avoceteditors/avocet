@@ -1,6 +1,7 @@
 package eval
 
 import (
+	"fmt"
 	"sync"
 	"unicode"
 )
@@ -25,7 +26,7 @@ func (e *Evaluator) wordWorker(in <-chan *Line, wg sync.WaitGroup) {
 		lastWord := ""
 		for _, w := range ls {
 			if w == lastWord {
-				l.Error("Dup")
+				l.Error(fmt.Sprintf("Dup(%q)", lastWord))
 				e.hasErrors = 1
 			}
 			lastWord = w
