@@ -1,6 +1,7 @@
 package eval
 
 import (
+	"strings"
 	"sync"
 	"unicode"
 )
@@ -10,21 +11,26 @@ func (e *Evaluator) wordWorker(in <-chan *Line, wg sync.WaitGroup) {
 	defer wg.Done()
 
 	for l := range in {
-		lastWord := ""
-		for _, w := range l.Words {
-			nw := []rune{}
-			for _, r := range w {
-				if unicode.IsLetter(r) || unicode.IsNumber(r) {
-					nw = append(nw, r)
-				}
+		rs := []rune{}
+		var lastChar rune
+
+		for _, c := range l.Text {
+			if unicode.IsLetter(c) {
+				rs = append(rs, c)
+			} else if c == ' ' && lastChar != ' ' {
+				rs = append(rs, ' ')
 			}
-			ns := string(nw)
-			if lastWord == ns {
+			lastChar = c
+		}
+		ls := strings.Split(string(rs), " ")
+		lastWord := ""
+		for _, w := range ls {
+			if w == lastWord {
 				l.Error("Dup")
 				e.hasErrors = 1
 			}
-			lastWord = ns
-
+			lastWord = w
 		}
+
 	}
 }
