@@ -12,9 +12,8 @@ func (e *Evaluator) wordWorker(in <-chan *Line, wg sync.WaitGroup) {
 	for l := range in {
 		lastWord := ""
 		for _, w := range l.Words {
-			rs := []rune(w)
 			nw := []rune{}
-			for _, r := range rs {
+			for _, r := range w {
 				if unicode.IsLetter(r) || unicode.IsNumber(r) {
 					nw = append(nw, r)
 				}
