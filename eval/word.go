@@ -14,13 +14,17 @@ func (e *Evaluator) wordWorker(in <-chan *Line, wg sync.WaitGroup) {
 		rs := []rune{}
 
 		ls := []string{}
+		last := rune(0)
 		for _, c := range l.Text {
-			if unicode.IsLetter(c) {
-				rs = append(rs, unicode.ToLower(c))
-			} else if c == ' ' && len(rs) > 0 {
+			if c == ' ' && len(rs) > 0 {
 				ls = append(ls, string(rs))
 				rs = []rune{}
+			} else if c == '.' && !unicode.IsLetter(last) {
+				rs = append(rs, unicode.ToLower(c))
+			} else {
+				rs = append(rs, unicode.ToLower(c))
 			}
+			last = c
 		}
 		lastWord := ""
 		for _, w := range ls {
