@@ -14,7 +14,6 @@ func (e *Evaluator) wordWorker(in <-chan *Line, wg sync.WaitGroup) {
 		rs := []rune{}
 
 		ls := []string{}
-		last := rune(0)
 		for _, c := range l.Text {
 			if c == ' ' && len(rs) > 0 {
 				ls = append(ls, string(rs))
