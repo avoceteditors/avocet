@@ -1,7 +1,5 @@
 
 
-install: install-doceval
-
-install-doceval:
-	go install ./cmd/doceval
+install: 
+	go install ./cmd/avocet
 

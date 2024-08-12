@@ -18,6 +18,8 @@ func Test_types(t *testing.T) {
 		{OList, olistType},
 		{CList, clistType},
 		{Indent, indentType},
+		{Space, spaceType},
+		{Text, textType},
 	}
 
 	for pos, datum := range data {

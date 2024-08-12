@@ -1,6 +1,6 @@
 package lexer
 
-import "github.com/avoceteditors/avocet/rst/token"
+import "github.com/avoceteditors/avocet/parsers/rst/token"
 
 func (l *Lexer) analyzeOpen(tok *token.Token) {
 	switch l.get(l.pos) {
@@ -16,11 +16,13 @@ func (l *Lexer) analyzeOpen(tok *token.Token) {
 	default:
 		tok.Type = token.ParaStart
 		l.actus = ParaFindEnd
+		l.pos--
 	}
 }
 
 func (l *Lexer) analyzeIndent(tok *token.Token) {
-	tok.Indent = l.getIndent()
+	tok.Indent = l.getIndent(l.pos)
+	l.pos += tok.Indent
 	if l.get(l.pos) == '\n' || l.get(l.pos) == 0 {
 		l.NL()
 		tok.Type = token.Empty
@@ -29,13 +31,13 @@ func (l *Lexer) analyzeIndent(tok *token.Token) {
 	tok.Type = token.Indent
 }
 
-func (l *Lexer) getIndent() int {
+func (l *Lexer) getIndent(pos int) int {
 	space := 0
-	r := l.get(l.pos)
+	r := l.get(pos)
 	for r == ' ' || r == '\t' {
 		space += incSpace(r)
-		l.pos++
-		r = l.get(l.pos)
+		pos++
+		r = l.get(pos)
 	}
 	return space
 }

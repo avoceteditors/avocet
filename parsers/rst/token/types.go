@@ -17,6 +17,9 @@ const (
 	OList
 	CList
 	Indent
+	Space
+
+	Text
 )
 
 const (
@@ -26,6 +29,7 @@ const (
 	emptyType = "EMPTY_TOKEN"
 
 	indentType = "INDENT_TOKEN"
+	spaceType  = "SPACE_TOKEN"
 
 	paraStartType = "PARAGRAPH_START_TOKEN"
 	paraEndType   = "PARAGRAPH_END_TOKEN"
@@ -33,10 +37,16 @@ const (
 	ulistType = "ITEMIZED_LIST_TOKEN"
 	olistType = "ENUMERATED_LIST_TOKEN"
 	clistType = "CHECKLIST_TOKEN"
+
+	textType = "INLINE_TEXT_TOKEN"
 )
 
 func (t Type) String() string {
 	switch t {
+	case Text:
+		return textType
+	case Space:
+		return spaceType
 	case Indent:
 		return indentType
 	case UList:

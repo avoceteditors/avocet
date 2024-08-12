@@ -1,6 +1,6 @@
 package lexer
 
-import "github.com/avoceteditors/avocet/rst/token"
+import "github.com/avoceteditors/avocet/parsers/rst/token"
 
 func (l *Lexer) analyzeUList(tok *token.Token) {
 	prime := l.get(l.pos)
@@ -16,6 +16,6 @@ func (l *Lexer) analyzeUList(tok *token.Token) {
 		return
 	}
 	l.pos++
-	l.getIndent()
+	l.pos += l.getIndent(l.pos)
 	tok.Type = token.UList
 }

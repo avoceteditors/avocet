@@ -1,6 +1,6 @@
 package lexer
 
-import "github.com/avoceteditors/avocet/rst/token"
+import "github.com/avoceteditors/avocet/parsers/rst/token"
 
 type Lexer struct {
 	actus Actus

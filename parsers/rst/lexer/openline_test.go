@@ -3,7 +3,7 @@ package lexer
 import (
 	"testing"
 
-	"github.com/avoceteditors/avocet/rst/token"
+	"github.com/avoceteditors/avocet/parsers/rst/token"
 )
 
 func Test_openline(t *testing.T) {
