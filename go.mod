@@ -3,7 +3,6 @@ module github.com/avoceteditors/avocet
 go 1.22.2
 
 require (
-	github.com/charmbracelet/lipgloss v0.10.0
 	github.com/charmbracelet/log v0.4.0
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/viper v1.19.0
@@ -11,6 +10,7 @@ require (
 
 require (
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
+	github.com/charmbracelet/lipgloss v0.10.0 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
