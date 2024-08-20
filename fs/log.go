@@ -13,6 +13,7 @@ func init() {
 
 	// Initialize Defaults
 	viper.SetDefault("avocet.buffers.rune", 20)
+	viper.SetDefault("avocet.log.fs", "debug")
 
 	// Configure Logger
 	opts := log.Options{
