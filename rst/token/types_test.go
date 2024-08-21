@@ -23,6 +23,7 @@ func Test_types(t *testing.T) {
 		{Tilda, tildaType},
 		{Score, scoreType},
 		{Plus, plusType},
+		{Num, numType},
 	}
 
 	for pos, datum := range data {

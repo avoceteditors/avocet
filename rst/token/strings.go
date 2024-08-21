@@ -34,6 +34,8 @@ func (t Type) String() string {
 		return scoreType
 	case Plus:
 		return plusType
+	case Num:
+		return numType
 	}
 
 	return fmt.Sprintf("UNKNOWN_TYPE(%d)", t)

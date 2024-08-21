@@ -19,8 +19,10 @@ const (
 	Tilda
 	Score
 	Plus
+	Num
 )
 const (
+	numType     = "NUMBER_TOKEN"
 	plusType    = "PLUS_TOKEN"
 	scoreType   = "SCORE_TOKEN"
 	tildaType   = "TILDA_TOKEN"
