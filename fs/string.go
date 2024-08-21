@@ -4,5 +4,6 @@ package fs
 // it also starts a goroutine that passes the runes of the string
 // into the channel.
 func ReadString(content string) chan rune {
+	initLogger()
 	return runeHandler([]rune(content))
 }
