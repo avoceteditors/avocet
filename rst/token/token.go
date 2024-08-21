@@ -1,5 +1,7 @@
 package token
 
+import "fmt"
+
 type Token struct {
 	Type Type `json:"type" yaml:"type" bson:"type"`
 
@@ -23,6 +25,21 @@ func New(fname string, line, col, pos int, r rune) *Token {
 		Rune:  r,
 		Runes: []rune{},
 	}
+	if r != 0 {
+		tok.Append(r)
+	}
 
 	return tok
+}
+
+func (tok *Token) String() string {
+	return fmt.Sprintf(
+		"Token<%s>{file=%q, line=%d, col=%d, text=%q}",
+		tok.Type.String(),
+		tok.File, tok.Line, tok.Col, string(tok.Runes))
+}
+
+func (tok *Token) Append(r rune) {
+	tok.Runes = append(tok.Runes, r)
+	tok.Size++
 }
