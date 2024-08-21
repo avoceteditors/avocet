@@ -2,6 +2,8 @@ package token
 
 import "unicode"
 
+// Analyze method classifies the initial token rune to set
+// a type.  This prepares the rune for lexical analysis.
 func (tok *Token) Analyze() {
 	switch tok.Rune {
 	case '*':
