@@ -1,10 +1,11 @@
 package token
 
 import (
+	"os"
 
-	"github.com/spf13/viper"
-	"github.com/charmbracelet/log"
 	alog "github.com/avoceteditors/avocet/log"
+	"github.com/charmbracelet/log"
+	"github.com/spf13/viper"
 )
 
 func init() {
@@ -13,9 +14,9 @@ func init() {
 
 var lgr *log.Logger
 
-func initLogger(){
+func initLogger() {
 	lgr = log.NewWithOptions(
 		os.Stderr,
-		alog.GetOptions(viper.GetString("avocet.log.rst.token"))
+		alog.GetOptions(viper.GetString("avocet.log.rst.token")))
 
 }
