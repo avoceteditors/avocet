@@ -9,6 +9,7 @@ import (
 // content as runes to the channel.
 // If the file cannot be read, it returns a closed channel.
 func ReadFile(file string) chan rune {
+	initLogger()
 	con, err := os.ReadFile(f)
 	if err != nil {
 		lgr.Errorf("Read Error: %s\n%s", file, err)
