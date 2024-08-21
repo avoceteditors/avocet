@@ -21,9 +21,8 @@ func init() {
 func initLogger() {
 
 	// Configure Logger
-	switch viper.GetString("avocet.log.fs") {
 	lgr = log.NewWithOptions(
-		os.Stderr, 
+		os.Stderr,
 		alog.GetOptions(viper.GetString("avocet.log.fs")))
 
 }
