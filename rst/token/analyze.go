@@ -14,8 +14,8 @@ func (tok *Token) Analyze() {
 		tok.Type = Space
 	case '\t':
 		tok.Type = Space
-		tok.Append(' ')
-		tok.Append(' ')
+		tok.Runes = []rune("   ")
+		tok.Size = 3
 	case '\n':
 		tok.Type = EOL
 	case '.':
