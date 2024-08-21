@@ -26,7 +26,12 @@ func Test_token_init(t *testing.T) {
 	if tok.Rune != r {
 		t.Errorf("Token has wrong rune: %q != %q", string(r), string(tok.Rune))
 	}
-	if len(tok.Runes) != 1 {
-		t.Errorf("Token has wrong number of runes: %d != %d", 1, len(tok.Runes))
+	if tok.Size != 1 {
+		t.Errorf("Token has wrong number of runes: %d != %d", 1, tok.Size)
+	}
+	tok.Append('b')
+	if tok.Size != 2 {
+		t.Errorf("Token has wrong number of runes: %d != %d", 2, tok.Size)
+
 	}
 }
