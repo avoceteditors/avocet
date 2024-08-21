@@ -2,7 +2,9 @@ package token
 
 import "github.com/spf13/viper"
 
-func Tokenize(file string, in chan rune) chan *Token {
+// Tokenize takes a file string and a channel that receives runes
+// and returns a channel that receives Token pointers.
+func Tokenize(file string, in <-chan rune) chan *Token {
 	out := make(chan *Token, viper.GetInt("avocet.buffer.token")+1)
 	go func() {
 		line := 1

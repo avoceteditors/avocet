@@ -1,5 +1,6 @@
 package token
 
+// Type is used to classify tokens by the tokenizer and lexer.
 type Type int
 
 // Token types
