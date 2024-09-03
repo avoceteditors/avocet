@@ -26,4 +26,5 @@ func Test_channel(t *testing.T) {
 		}
 		pos++
 	}
+	t.Printf("%s Done", name)
 }

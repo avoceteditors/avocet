@@ -43,5 +43,6 @@ func Test_analysis(t *testing.T) {
 		}
 
 	}
+	t.Printf("%s Done", name)
 
 }
